@@ -13,7 +13,7 @@ public class JTRanking {
 	
 	private static int rank(Vector<Integer> Perm){
 		Integer[] array = {};
-		Vector<Integer> Perm1 = new Vector<Integer>(Arrays.asList(array));;
+		Vector<Integer> Perm1 = new Vector<Integer>(Arrays.asList(array));
 		int n = Perm.size();
 	    if(n == 1){
 	    	return 0;
