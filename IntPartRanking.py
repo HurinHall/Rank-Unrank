@@ -3,7 +3,7 @@
 #    |09/05/2017
 #    |Copyright 2017 Iceloof All rights reserved                 
 #    |_______________________________________________
-#    Rank and Unrank for colex order of subsets
+#    Rank and Unrank for lex order(integer partitions)
 
 def p(n,k):
     if k==1 or n<1: return 0
