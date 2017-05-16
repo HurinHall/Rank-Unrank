@@ -20,12 +20,16 @@ if choice == 1:
     order = input('Please input permutation(space between number): ')
     item = order.split()
     n = 0
+    tmp = 0
     for i in range(len(item)):
         n += int(item[i])
     rank = p(n,n+1)
-    print("n=",(n),[p(n,k+1) for k in range(n+2)])
+    print("P(",n,")=",rank)
     for i in range(len(item)):
+        n = n - tmp
         rank -= p(n,int(item[i]))
+        print("P(",n,",",item[i],")=",p(n,int(item[i])))
+        tmp = int(item[i])
     rank -= 1
     print (rank)
 elif choice == 2:
@@ -33,38 +37,17 @@ elif choice == 2:
     rank = int(input('Input rank: '))
     remain = p(n,n+1) - rank -1
     rank = remain
-    first = n
-    tmp = n
-    sum_val = 0
-    flag = 0
     result = []
     # Dynamic Programming may be better
     while True:
-        p_value = p(n,tmp)
-        if rank == p_value:
-            if sum_val + tmp == n:
-                result.append(tmp)
-                print(result)
-                break
-            elif sum_val + tmp < n and (p_value == 1 or p_value == 0):
-                rank = rank - p_value
-                sum_val += tmp
-                result.append(tmp)
-            else:
-                tmp = first - 1
-                first = tmp
-                sum_val = 0
-                rank = remain
-                flag = 0
-                result = [] 
-        elif p_value < rank:
-            if flag == 0:
-                first = tmp
-                flag = 1
-            rank = rank - p_value
-            sum_val += tmp
-            result.append(tmp)
-        else:
-            tmp -= 1
+        i = n
+        while p(n,i) > rank:
+            i -= 1
+        result.append(i),
+        rank = rank - p(n,i)
+        n -= i
+        if n == 0:
+            break
+    print(result)
 else:
     print("Error")
