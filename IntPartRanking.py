@@ -35,8 +35,7 @@ if choice == 1:
 elif choice == 2:
     n = int(input('Input n: '))
     rank = int(input('Input rank: '))
-    remain = p(n,n+1) - rank -1
-    rank = remain
+    rank = p(n,n+1) - rank -1
     result = []
     # Dynamic Programming may be better
     while True:
